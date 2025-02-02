@@ -9,7 +9,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },      
       { text: 'Examples', link: '/markdown-examples' },
-      { text: 'Gym', link: '/gym/basic/s01' },
+      { text: 'Gym', link: '/gym/basic/s03/compositionApi.md' },
     ],
 
     sidebar: [
@@ -21,13 +21,45 @@ export default defineConfig({
       },
       {
         text: 'Basic',
+        link:'/gym/basic/s03/compositionApi.md',
         items: [
-          { text: '강의소개', link:'/gym/basic/s01.md'},
-          { text: '준비하기', link:'/gym/basic/s02.md'},
-          { text: '시작하기', link:'/gym/basic/s03.md'},
-          { text: 'Vue3 Composition API', link:'/gym/basic/s04.md'},
-          { text: 'Bootstrap5', link:'/gym/basic/s05.md'},
-          { text: '컴포넌트 기초+심화', link:'/gym/basic/s06.md'},
+          { text: '강의소개', },
+          { text: '준비하기', link:'/gym/basic/s02/s02.md'},          
+          { text: 'Vue3 Composition API',    
+            items: 
+            [
+              { text: 'CompositionAPI',link:'/gym/basic/s03/compositionApi.md' },
+              { text: 'Setup',link:'/gym/basic/s03/setupHook.md' },
+              { text: '템플릿 문법',link:'/gym/basic/s03/templateSyntax.md' },
+              { text: '반응형 기초',link:'/gym/basic/s03/reactivity.md' },
+              { text: 'Computed',link:'/gym/basic/s03/computed.md' },
+              { text: '클래스&스타일 바인딩',link:'/gym/basic/s03/classStyleBind.md' },
+              { text: '조건부 렌더링',link:'/gym/basic/s03/if.md' },
+              { text: '목록 렌더링',link:'/gym/basic/s03/for.md' },
+              { text: '디렉티브(directives)',link:'/gym/basic/s03/directives.md' },
+              { text: '이벤트 처리',link:'/gym/basic/s03/event.md' },
+              { text: '양방향 바인딩',link:'/gym/basic/s03/vModel.md' },
+              { text: 'Watch, WatchEffect',link:'/gym/basic/s03/watchWatchEffect.md' },
+              { text: 'Dynamic Components',link:'/gym/basic/s03/dynamicComponents.md' },              
+            ]
+         },
+          { text: 'Bootstrap5', link:'/gym/basic/s05/s05.md'},
+          { text: '컴포넌트 기초+심화', 
+            items:
+            [
+              { text: '컴포넌트 기초',link:'/gym/basic/s06/componentBasic.md'},
+              { text: 'Single File Component',link:'/gym/basic/s06/singgleFileComponent.md'},
+              { text: 'Props',link:'/gym/basic/s06/props.md'},
+              { text: 'Events',link:'/gym/basic/s06/events.md'},
+              { text: 'Non-Prop',link:'/gym/basic/s06/nonProp.md'},
+              { text: 'Slots',link:'/gym/basic/s06/slots.md'},
+              { text: 'Provide/Inject',link:'/gym/basic/s06/provideInject.md'},
+              { text: 'LifecycleHooks',link:'/gym/basic/s06/lifecycleHooks.md'},
+              { text: 'Template Refs',link:'/gym/basic/s06/templateRefs.md'},
+              { text: 'script setup',link:'/gym/basic/s06/scriptSetup.md'},
+              { text: '동적 컴포넌트',link:'/gym/basic/s06/dynamicComponent.md'},
+            ]
+          },
           { text: '마치며', link:'/gym/basic/s07.md'},          
         ]
       },

@@ -2,14 +2,14 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
+  title: "KIM STUDY",
   description: "A VitePress Site",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },      
       { text: 'Examples', link: '/markdown-examples' },
-      { text: 'Gym', link: '/gym/basic/s03/compositionApi.md' },
+      { text: 'Gym', link:'/gym/basic/index.md'},
     ],
 
     sidebar: [
@@ -20,12 +20,12 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Basic',
-        link:'/gym/basic/s03/compositionApi.md',
+        text: 'Basic',        
         items: [
           { text: '강의소개', },
           { text: '준비하기', link:'/gym/basic/s02/s02.md'},          
-          { text: 'Vue3 Composition API',    
+          { text: 'Vue3 Composition API',
+            collapsed:true,
             items: 
             [
               { text: 'CompositionAPI',link:'/gym/basic/s03/compositionApi.md' },
@@ -45,6 +45,7 @@ export default defineConfig({
          },
           { text: 'Bootstrap5', link:'/gym/basic/s05/s05.md'},
           { text: '컴포넌트 기초+심화', 
+            collapsed:true,
             items:
             [
               { text: '컴포넌트 기초',link:'/gym/basic/s06/componentBasic.md'},

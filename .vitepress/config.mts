@@ -15,9 +15,13 @@ export default defineConfig({
     sidebar:{
       '/vue/':[
         {
-          text:'json-server', items:[
-            { text: 'basic',link:'/vue/jsonServer.md'},
-            { text: '게시판',link:'/vue/boardJsonServer.md'},
+          text:'vue', items:[
+            { text: '기본',link:'/vue/official-basic.md'},
+            { text: '심화',link:'/vue/official-advanced.md'},
+            { text: '예제',link:'/vue/examples.md'},
+            { text: 'json-server',link:'/vue/jsonServer.md'},
+            { text: '게시판',link:'/vue/boardJsonServer.md'},            
+            { text: 'Snackbar',link:'/vue/snackbar.md'},
           ]
         },
       ],

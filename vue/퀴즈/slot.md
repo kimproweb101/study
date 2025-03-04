@@ -1,5 +1,3 @@
-## slot
-
 ### slot 모두
 
 Scoped Slots : 자식

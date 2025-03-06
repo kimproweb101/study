@@ -70,3 +70,30 @@ const totalPages = computed(() => Math.ceil(totalCount.value / params.value._lim
 1/2 //몫이 0.5 나머지 0
 옳은 생각
 1%2 몫 0 나머지1
+
+
+## vitepress github pages 배포 error
+
+- 트라이1 아래와 같이 수정
+
+```js
+Archive artifact
+  tar: docs/.vitepress/dist: Cannot open: No such file or directory
+  tar: Error is not recoverable: exiting now
+  Error: Process completed with exit code 2.
+```
+
+::: code-group
+```yaml 수정전
+jobs:
+  # 빌드 작업
+  build:   
+        with:
+          path: docs/.vitepress/dist
+```
+
+```yaml 수정후
+        with:
+          path: .vitepress/dist
+```
+:::

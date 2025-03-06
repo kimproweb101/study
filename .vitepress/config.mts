@@ -31,6 +31,24 @@ export default defineConfig({
       ],
       "/gym/": [
         {
+          text: "Firebase",
+          items: [
+            { text: "시작하기",link: "/gym/firebase/s01.md" },
+            { text: "Auto Page&Layout",link: "/gym/firebase/s02.md" },
+            { text: "Quasar 활용 UI 만들기",link: "/gym/firebase/s03.md" },
+            { text: "Firebase 시작하기",link: "/gym/firebase/s04.md" },
+            { text: "Firebase Authentication",link: "/gym/firebase/s05.md" },
+            { text: "VueUse & 공통 기능",link: "/gym/firebase/s06.md" },
+            { text: "Firebase Cloud Firestore",link: "/gym/firebase/s07.md" },
+            { text: "Web API & 고도화",link: "/gym/firebase/s08.md" },
+            { text: "Firebase Cloud Storage",link: "/gym/firebase/s09.md" },
+            { text: "Firebase Cloud Functions",link: "/gym/firebase/s10.md" },
+            { text: "Algolia Search",link: "/gym/firebase/s11.md" },
+            { text: "Firebase 보안규칙 & 배포(Hosting)",link: "/gym/firebase/s12.md" },
+            { text: "마치며",link: "/gym/firebase/s13.md" },
+          ],
+        },
+        {
           text: "Basic",
           items: [
             { text: "강의소개" },
@@ -74,7 +92,7 @@ export default defineConfig({
             },
             { text: "마치며", link: "/gym/basic/s07.md" },
           ],
-        },
+        },        
         {
           text: "Advanced",
           items: [
@@ -91,7 +109,7 @@ export default defineConfig({
             { text: "Vue Router심화", link: "/gym/advanced/s11.md" },
             { text: "마치며", link: "/gym/advanced/s12.md" },
           ],
-        },
+        },        
       ],
     },    
   },

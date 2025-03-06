@@ -1,7 +1,8 @@
 import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+
+export default defineConfig({  
   title: "KIM STUDY",
   description: "A VitePress Site",
   themeConfig: {
@@ -92,79 +93,6 @@ export default defineConfig({
           ],
         },
       ],
-    },
-
-    // sidebar: [
-    //   {
-    //     text:'json-server', items:[
-    //       { text: 'basic',link:'/vue/jsonServer.md'},
-    //       { text: '게시판',link:'/vue/boardJsonServer.md'},
-    //     ]
-    //   },
-    //   {
-    //     text: 'Basic',
-    //     items: [
-    //       { text: '강의소개', },
-    //       { text: '준비하기', link:'/gym/basic/s02/s02.md'},
-    //       { text: 'Vue3 Composition API',
-    //         collapsed:true,
-    //         items:
-    //         [
-    //           { text: 'CompositionAPI',link:'/gym/basic/s03/compositionApi.md' },
-    //           { text: 'Setup',link:'/gym/basic/s03/setupHook.md' },
-    //           { text: '템플릿 문법',link:'/gym/basic/s03/templateSyntax.md' },
-    //           { text: '반응형 기초',link:'/gym/basic/s03/reactivity.md' },
-    //           { text: 'Computed',link:'/gym/basic/s03/computed.md' },
-    //           { text: '클래스&스타일 바인딩',link:'/gym/basic/s03/classStyleBind.md' },
-    //           { text: '조건부 렌더링',link:'/gym/basic/s03/if.md' },
-    //           { text: '목록 렌더링',link:'/gym/basic/s03/for.md' },
-    //           { text: '디렉티브(directives)',link:'/gym/basic/s03/directives.md' },
-    //           { text: '이벤트 처리',link:'/gym/basic/s03/event.md' },
-    //           { text: '양방향 바인딩',link:'/gym/basic/s03/vModel.md' },
-    //           { text: 'Watch, WatchEffect',link:'/gym/basic/s03/watchWatchEffect.md' },
-    //           { text: 'Dynamic Components',link:'/gym/basic/s03/dynamicComponents.md' },
-    //         ]
-    //      },
-    //       { text: 'Bootstrap5', link:'/gym/basic/s05/s05.md'},
-    //       { text: '컴포넌트 기초+심화',
-    //         collapsed:true,
-    //         items:
-    //         [
-    //           { text: '컴포넌트 기초',link:'/gym/basic/s06/componentBasic.md'},
-    //           { text: 'Single File Component',link:'/gym/basic/s06/singgleFileComponent.md'},
-    //           { text: 'Props',link:'/gym/basic/s06/props.md'},
-    //           { text: 'Events',link:'/gym/basic/s06/events.md'},
-    //           { text: 'Non-Prop',link:'/gym/basic/s06/nonProp.md'},
-    //           { text: 'Slots',link:'/gym/basic/s06/slots.md'},
-    //           { text: 'Provide/Inject',link:'/gym/basic/s06/provideInject.md'},
-    //           { text: 'LifecycleHooks',link:'/gym/basic/s06/lifecycleHooks.md'},
-    //           { text: 'Template Refs',link:'/gym/basic/s06/templateRefs.md'},
-    //           { text: 'script setup',link:'/gym/basic/s06/scriptSetup.md'},
-    //           { text: '동적 컴포넌트',link:'/gym/basic/s06/dynamicComponent.md'},
-    //         ]
-    //       },
-    //       { text: '마치며', link:'/gym/basic/s07.md'},
-    //     ]
-    //   },
-    //   {
-    //     text: 'Advanced',
-    //     items: [
-    //       { text: '강의소개', link:'/gym/advanced/s01.md'},
-    //       { text: '실전 프로젝트 구성', link:'/gym/advanced/s02.md'},
-    //       { text: 'Vue Router v4.x', link:'/gym/advanced/s03.md'},
-    //       { text: 'HTTP API 통신', link:'/gym/advanced/s04.md'},
-    //       { text: '공통 컴포넌트', link:'/gym/advanced/s05.md'},
-    //       { text: 'Vue3 내장 컴포넌트', link:'/gym/advanced/s06.md'},
-    //       { text: '재사용성', link:'/gym/advanced/s07.md'},
-    //       { text: '재사용성:Composavles', link:'/gym/advanced/s08.md'},
-    //       { text: 'toRef & toRefs', link:'/gym/advanced/s09.md'},
-    //       { text: 'Pinia', link:'/gym/advanced/s10.md'},
-    //       { text: 'Vue Router심화', link:'/gym/advanced/s11.md'},
-    //       { text: '마치며', link:'/gym/advanced/s12.md'},
-    //     ]
-    //   }
-    // ],
-
-    socialLinks: [{ icon: "github", link: "https://github.com/vuejs/vitepress" }],
+    },    
   },
 });

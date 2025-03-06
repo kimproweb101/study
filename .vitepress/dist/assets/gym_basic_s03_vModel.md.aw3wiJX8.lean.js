@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.Dh1jimFm.js";const p=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"gym/basic/s03/vModel.md","filePath":"gym/basic/s03/vModel.md"}'),s={name:"gym/basic/s03/vModel.md"};function o(c,r,n,d,i,m){return a(),t("div")}const _=e(s,[["render",o]]);export{p as __pageData,_ as default};

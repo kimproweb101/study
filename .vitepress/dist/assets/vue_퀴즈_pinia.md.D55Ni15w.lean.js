@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as n,ae as t}from"./chunks/framework.Dh1jimFm.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"vue/퀴즈/pinia.md","filePath":"vue/퀴즈/pinia.md"}'),l={name:"vue/퀴즈/pinia.md"};function h(k,s,p,e,E,r){return n(),a("div",null,s[0]||(s[0]=[t("",11)]))}const y=i(l,[["render",h]]);export{g as __pageData,y as default};

@@ -88,9 +88,9 @@ export default defineConfig({
                 { text: "Template Refs", link: "/gym/basic/s06/templateRefs.md" },
                 { text: "script setup", link: "/gym/basic/s06/scriptSetup.md" },
                 { text: "동적 컴포넌트", link: "/gym/basic/s06/dynamicComponent.md" },
+                { text: "마치며", link: "/gym/basic/s07/s07.md" },
               ],
-            },
-            { text: "마치며", link: "/gym/basic/s07.md" },
+            },            
           ],
         },        
         {

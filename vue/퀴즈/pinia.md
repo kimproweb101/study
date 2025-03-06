@@ -119,7 +119,7 @@ const { counter: counter2 } = storeToRefs(store);
 
 ::: details 구조분해 할당으로 store 데이터 및 함수 가져오기
 
-- actions 는 그냥 가져오면 됨
+- actions 는 그냥 가져오면 됨.
 - script 안에서 바로사용 가능 counter.value increment()
 - vuex 에서는 state를 직접 수정을 못했지만 pinia 에서는 직접 수정 가능
 

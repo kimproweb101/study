@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.DAUS992W.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{"outline":"deep"},"headers":[],"relativePath":"vue/정답.md","filePath":"vue/정답.md"}'),o={name:"vue/정답.md"};function r(n,s,c,_,p,d){return a(),t("div")}const f=e(o,[["render",r]]);export{m as __pageData,f as default};

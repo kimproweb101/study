@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.DAUS992W.js";const p=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"gym/basic/s03/if.md","filePath":"gym/basic/s03/if.md"}'),s={name:"gym/basic/s03/if.md"};function c(r,i,o,n,f,m){return a(),t("div")}const d=e(s,[["render",c]]);export{p as __pageData,d as default};

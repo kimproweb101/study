@@ -97,3 +97,11 @@ jobs:
           path: .vitepress/dist
 ```
 :::
+
+## vitepress github pages 이미지 깨짐
+```js
+// .vitepress/config.mjs
+export default defineConfig({
+  base:'/vitepress/',
+})
+```

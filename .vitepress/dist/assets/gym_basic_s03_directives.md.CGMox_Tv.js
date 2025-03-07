@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as s}from"./chunks/framework.Dh1jimFm.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"gym/basic/s03/directives.md","filePath":"gym/basic/s03/directives.md"}'),a={name:"gym/basic/s03/directives.md"};function c(r,i,o,n,d,m){return s(),t("div")}const f=e(a,[["render",c]]);export{_ as __pageData,f as default};

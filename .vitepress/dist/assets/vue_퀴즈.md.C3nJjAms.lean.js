@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as t,ae as n}from"./chunks/framework.Dh1jimFm.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{"outline":"deep"},"headers":[],"relativePath":"vue/퀴즈.md","filePath":"vue/퀴즈.md"}'),l={name:"vue/퀴즈.md"};function h(k,s,p,e,E,r){return t(),a("div",null,s[0]||(s[0]=[n("",31)]))}const y=i(l,[["render",h]]);export{g as __pageData,y as default};

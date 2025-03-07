@@ -1,0 +1,1 @@
+import{_ as i,c as a,o as t,ae as l}from"./chunks/framework.DAUS992W.js";const r=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"vue/퀴즈/slot.md","filePath":"vue/퀴즈/slot.md"}'),h={name:"vue/퀴즈/slot.md"};function n(p,s,k,e,E,d){return t(),a("div",null,s[0]||(s[0]=[l("",10)]))}const o=i(h,[["render",n]]);export{r as __pageData,o as default};

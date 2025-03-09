@@ -2,10 +2,12 @@
 outline : deep
 ---
 
+## snackbar
 
 ### 1.스낵바&트렌지션
 
 ::: tip snackbar
+
 ```vue [파일]
 /components/AppSnackbar.vue
 /views/SnackbarView.vue

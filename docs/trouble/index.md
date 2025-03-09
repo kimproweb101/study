@@ -105,3 +105,61 @@ export default defineConfig({
   base:'/vitepress/',
 })
 ```
+
+
+## eslint
+
+1.vue-multi-word-component-names
+- error 시 아래 코드를 추가하면 해결됨
+- 추가할 항목은 아래 사이트 방문
+- [https://eslint.vuejs.org/rules/]
+
+```js
+export default [
+  {
+    "vue/multi-word-component-names": ["error", {
+      "ignores": []
+    }]
+  },
+]
+```
+
+### defineProps 문법 틀림
+
+```vue [틀린문법1]
+- 무지성 으로 코딩..
+defineProps(
+  {
+    id:Number
+  },
+  {
+    title:String
+  }
+)
+```
+
+```vue [틀린문법2]
+- 1번이 안되서 무지성 으로 2번째 시도
+defineProps(
+  {
+    id:{
+      type: String
+    }
+  },
+  {
+    title: {
+      type:String
+    }
+  }
+)
+```
+
+```vue [옳은 문법]
+defineProps({
+  id: {
+    type: String
+  },
+  title:{
+    type:String
+  }
+})

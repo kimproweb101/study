@@ -2,6 +2,8 @@
 outline: deep
 ---
 
+## board json-server
+
 ### 설치
 ```sh
 npm i -D json-server

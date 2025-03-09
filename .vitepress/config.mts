@@ -23,17 +23,49 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
-      { text: "trouble", link: "/docs/trouble/index.md" },      
+      { text: "trouble", link: "/docs/trouble/index.md" },
+      { text: "tutorials", link: "/docs/tutorials/index.md" },
       { text: "vue", link: "/docs/vue/basic.md" },
       { text: "Gym", link: "/docs//gym/basic/index.md" },
+      { text: "Program", link: "/docs//program/비주얼스튜디오코드.md" },
     ],
     sidebar: {
+      "/docs/tutorials/": [
+        {
+          text: "tutorials",
+          items: [
+            { text: "vue", items: 
+              [
+                {text:'home',link: "/docs/tutorials/index.md"},
+                {text:'ui',link: "/docs/tutorials/vue/ui.md"},
+                {text:'plugins',link: "/docs/tutorials/vue/plugins.md",
+                  items:[
+                    {text:'unplugin-vue-router',link: "/docs/tutorials/vue/plugins/unplugin-vue-router.md"},
+                    {text:'vite-plugin-vue-layouts',link: "/docs/tutorials/vue/plugins/vite-plugin-vue-layouts.md"},                    
+                  ]
+                },
+              ]
+            },
+          ],
+        },
+      ],
       "/docs/vue/": [
         {
           text: "vue",
           items: [
             { text: "basic", link: "/docs/vue/basic.md" },
-            { text: "example", link: "/docs/vue/example.md" },
+            { text: "example",
+              items:[                
+                {text:'AuthModal', link:'/docs/vue/example/AuthModal.md'},
+                {text:'AuthModalDynamic', link:'/docs/vue/example/AuthModalDynamicComponent.md'},
+                {text:'boardJsonServer', link:'/docs/vue/example/boardJsonServer.md'},                
+                {text:'useModal', link:'/docs/vue/example/useModal.md'},
+                {text:'snackbar', link:'/docs/vue/example/snackbar.md'},
+                {text:'v-model', link:'/docs/vue/example/v-model.md'},
+              ] 
+            },        
+            { text: "bootstrap", link: "/docs/vue/bootstrap.md" },
+            { text: "quasar", link: "/docs/vue/quasar.md" },
           ],
         },
       ],

@@ -13,3 +13,6 @@ outline: deep
 ## pinia
 
 <!--@include: ./basic/pinia.md-->
+
+## props
+<!--@include: ./basic/props.md-->

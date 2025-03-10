@@ -71,7 +71,6 @@ const totalPages = computed(() => Math.ceil(totalCount.value / params.value._lim
 옳은 생각
 1%2 몫 0 나머지1
 
-
 ## vitepress github pages 배포 error
 
 - 트라이1 아래와 같이 수정
@@ -84,32 +83,35 @@ Archive artifact
 ```
 
 ::: code-group
+
 ```yaml 수정전
 jobs:
   # 빌드 작업
-  build:   
-        with:
-          path: docs/.vitepress/dist
+  build:
+    with:
+      path: docs/.vitepress/dist
 ```
 
 ```yaml 수정후
-        with:
-          path: .vitepress/dist
+with:
+  path: .vitepress/dist
 ```
+
 :::
 
 ## vitepress github pages 이미지 깨짐
+
 ```js
 // .vitepress/config.mjs
 export default defineConfig({
-  base:'/vitepress/',
-})
+  base: "/vitepress/",
+});
 ```
-
 
 ## eslint
 
 1.vue-multi-word-component-names
+
 - error 시 아래 코드를 추가하면 해결됨
 - 추가할 항목은 아래 사이트 방문
 - [https://eslint.vuejs.org/rules/]
@@ -117,49 +119,39 @@ export default defineConfig({
 ```js
 export default [
   {
-    "vue/multi-word-component-names": ["error", {
-      "ignores": []
-    }]
+    "vue/multi-word-component-names": [
+      "error",
+      {
+        ignores: [],
+      },
+    ],
   },
-]
+];
 ```
 
 ### defineProps 문법 틀림
 
 ```vue [틀린문법1]
-- 무지성 으로 코딩..
-defineProps(
-  {
-    id:Number
-  },
-  {
-    title:String
-  }
-)
+- 무지성 으로 코딩.. defineProps( { id:Number }, { title:String } )
 ```
 
 ```vue [틀린문법2]
-- 1번이 안되서 무지성 으로 2번째 시도
-defineProps(
-  {
-    id:{
-      type: String
-    }
-  },
-  {
-    title: {
-      type:String
-    }
-  }
-)
+- 1번이 안되서 무지성 으로 2번째 시도 defineProps( { id:{ type: String } }, { title: { type:String } } )
 ```
 
 ```vue [옳은 문법]
+<script>
 defineProps({
   id: {
-    type: String
+    type: String,
   },
-  title:{
-    type:String
-  }
-})
+  title: {
+    type: String,
+  },
+});
+</script>
+```
+
+### git repository 비공개 전환
+
+- settings - danger zone - visibility - Make Private

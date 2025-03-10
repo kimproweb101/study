@@ -1,21 +1,19 @@
 import { defineConfig } from "vitepress";
-import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
+import { groupIconMdPlugin, groupIconVitePlugin } from "vitepress-plugin-group-icons";
 
 // https://vitepress.dev/reference/site-config
 
-export default defineConfig({  
-  base :'/study/',
+export default defineConfig({
+  base: "/study/",
   markdown: {
     config(md) {
       md.use(groupIconMdPlugin, {
         titleBar: { includeSnippet: true },
-      })
+      });
     },
   },
   vite: {
-    plugins: [
-      groupIconVitePlugin()
-    ],
+    plugins: [groupIconVitePlugin()],
   },
   title: "KIM STUDY",
   description: "A VitePress Site",
@@ -25,6 +23,7 @@ export default defineConfig({
       { text: "Home", link: "/" },
       { text: "trouble", link: "/docs/trouble/index.md" },
       { text: "tutorials", link: "/docs/tutorials/index.md" },
+      { text: "javascript", link: "/docs/javascript/javascript.md" },
       { text: "vue", link: "/docs/vue/basic.md" },
       { text: "Gym", link: "/docs//gym/basic/index.md" },
       { text: "Program", link: "/docs//program/비주얼스튜디오코드.md" },
@@ -34,17 +33,20 @@ export default defineConfig({
         {
           text: "tutorials",
           items: [
-            { text: "vue", items: 
-              [
-                {text:'home',link: "/docs/tutorials/index.md"},
-                {text:'ui',link: "/docs/tutorials/vue/ui.md"},
-                {text:'plugins',link: "/docs/tutorials/vue/plugins.md",
-                  items:[
-                    {text:'unplugin-vue-router',link: "/docs/tutorials/vue/plugins/unplugin-vue-router.md"},
-                    {text:'vite-plugin-vue-layouts',link: "/docs/tutorials/vue/plugins/vite-plugin-vue-layouts.md"},                    
-                  ]
+            {
+              text: "vue",
+              items: [
+                { text: "home", link: "/docs/tutorials/index.md" },
+                { text: "ui", link: "/docs/tutorials/vue/ui.md" },
+                {
+                  text: "plugins",
+                  link: "/docs/tutorials/vue/plugins.md",
+                  items: [
+                    { text: "unplugin-vue-router", link: "/docs/tutorials/vue/plugins/unplugin-vue-router.md" },
+                    { text: "vite-plugin-vue-layouts", link: "/docs/tutorials/vue/plugins/vite-plugin-vue-layouts.md" },
+                  ],
                 },
-              ]
+              ],
             },
           ],
         },
@@ -54,18 +56,20 @@ export default defineConfig({
           text: "vue",
           items: [
             { text: "basic", link: "/docs/vue/basic.md" },
-            { text: "example",
-              items:[                
-                {text:'AuthModal', link:'/docs/vue/example/AuthModal.md'},
-                {text:'AuthModalDynamic', link:'/docs/vue/example/AuthModalDynamicComponent.md'},
-                {text:'boardJsonServer', link:'/docs/vue/example/boardJsonServer.md'},                
-                {text:'useModal', link:'/docs/vue/example/useModal.md'},
-                {text:'snackbar', link:'/docs/vue/example/snackbar.md'},
-                {text:'v-model', link:'/docs/vue/example/v-model.md'},
-              ] 
-            },        
+            {
+              text: "example",
+              items: [
+                { text: "AuthModal", link: "/docs/vue/example/AuthModal.md" },
+                { text: "AuthModalDynamic", link: "/docs/vue/example/AuthModalDynamicComponent.md" },
+                { text: "boardJsonServer", link: "/docs/vue/example/boardJsonServer.md" },
+                { text: "useModal", link: "/docs/vue/example/useModal.md" },
+                { text: "snackbar", link: "/docs/vue/example/snackbar.md" },
+                { text: "v-model", link: "/docs/vue/example/v-model.md" },
+              ],
+            },
             { text: "bootstrap", link: "/docs/vue/bootstrap.md" },
             { text: "quasar", link: "/docs/vue/quasar.md" },
+            { text: "firebase", link: "/docs/vue/firebase/firebase.md" },
           ],
         },
       ],
@@ -73,19 +77,19 @@ export default defineConfig({
         {
           text: "Firebase",
           items: [
-            { text: "시작하기",link: "/docs/gym/firebase/s01.md" },
-            { text: "Auto Page&Layout",link: "/docs/gym/firebase/s02.md" },
-            { text: "Quasar 활용 UI 만들기",link: "/docs/gym/firebase/s03.md" },
-            { text: "Firebase 시작하기",link: "/docs/gym/firebase/s04.md" },
-            { text: "Firebase Authentication",link: "/docs/gym/firebase/s05.md" },
-            { text: "VueUse & 공통 기능",link: "/docs/gym/firebase/s06.md" },
-            { text: "Firebase Cloud Firestore",link: "/docs/gym/firebase/s07.md" },
-            { text: "Web API & 고도화",link: "/docs/gym/firebase/s08.md" },
-            { text: "Firebase Cloud Storage",link: "/docs/gym/firebase/s09.md" },
-            { text: "Firebase Cloud Functions",link: "/docs/gym/firebase/s10.md" },
-            { text: "Algolia Search",link: "/docs/gym/firebase/s11.md" },
-            { text: "Firebase 보안규칙 & 배포(Hosting)",link: "/docs/gym/firebase/s12.md" },
-            { text: "마치며",link: "/docs/gym/firebase/s13.md" },
+            { text: "시작하기", link: "/docs/gym/firebase/s01.md" },
+            { text: "Auto Page&Layout", link: "/docs/gym/firebase/s02.md" },
+            { text: "Quasar 활용 UI 만들기", link: "/docs/gym/firebase/s03.md" },
+            { text: "Firebase 시작하기", link: "/docs/gym/firebase/s04.md" },
+            { text: "Firebase Authentication", link: "/docs/gym/firebase/s05.md" },
+            { text: "VueUse & 공통 기능", link: "/docs/gym/firebase/s06.md" },
+            { text: "Firebase Cloud Firestore", link: "/docs/gym/firebase/s07.md" },
+            { text: "Web API & 고도화", link: "/docs/gym/firebase/s08.md" },
+            { text: "Firebase Cloud Storage", link: "/docs/gym/firebase/s09.md" },
+            { text: "Firebase Cloud Functions", link: "/docs/gym/firebase/s10.md" },
+            { text: "Algolia Search", link: "/docs/gym/firebase/s11.md" },
+            { text: "Firebase 보안규칙 & 배포(Hosting)", link: "/docs/gym/firebase/s12.md" },
+            { text: "마치며", link: "/docs/gym/firebase/s13.md" },
           ],
         },
         {
@@ -130,9 +134,9 @@ export default defineConfig({
                 { text: "동적 컴포넌트", link: "/docs/gym/basic/s06/dynamicComponent.md" },
                 { text: "마치며", link: "/docs/gym/basic/s07/s07.md" },
               ],
-            },            
+            },
           ],
-        },        
+        },
         {
           text: "Advanced",
           items: [
@@ -149,8 +153,8 @@ export default defineConfig({
             { text: "Vue Router심화", link: "/docs/gym/advanced/s11.md" },
             { text: "마치며", link: "/docs/gym/advanced/s12.md" },
           ],
-        },        
+        },
       ],
-    },    
+    },
   },
 });

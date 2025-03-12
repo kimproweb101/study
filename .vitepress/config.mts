@@ -76,6 +76,10 @@ export default defineConfig({
       "/docs/gym/": [
         {
           text: "Firebase",
+          items: [{ text: "시작하기", link: "/docs/gym/firebase-git/30_create_post.md" }],
+        },
+        {
+          text: "Firebase",
           items: [
             { text: "시작하기", link: "/docs/gym/firebase/s01.md" },
             { text: "Auto Page&Layout", link: "/docs/gym/firebase/s02.md" },

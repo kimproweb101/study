@@ -371,6 +371,281 @@ export async function getPosts(params) {
 ```
 
 ## 복합 쿼리 및 쿼리 연산자
+### 레프트 메뉴 필터
+```js [post.js]
+export async function getPosts(params) {
+  const conditions = [];
+  if (params?.category) {
+    conditions.push(where('category', '==', params?.category));
+  }
+
+  const q = query(collection(db, 'posts'), ...conditions);
+  const querySnapshot = await getDocs(q);
+  const posts = querySnapshot.docs.map(docs => {
+    const data = docs.data();
+    return {
+      ...data,
+      id: docs.id,
+      createdAt: data.createdAt?.toDate(),
+    };
+  });
+  return posts;
+}
+
+```
+
+```vue [pages/components/PostLeftBar.vue]
+<template>
+  <StickySideBar>
+    <q-card flat bordered>
+      <q-list bordered separator>
+        <q-item
+          clickable
+          v-ripple
+          :active="category === null"
+          @click="changeCategory(null)"
+        >
+          <q-item-section>전체</q-item-section>
+        </q-item>
+        <q-item
+          v-for="cate in categories"
+          :key="cate.value"
+          clickable
+          v-ripple
+          :active="category === cate.value"
+          @click="changeCategory(cate.value)"
+        >
+          <q-item-section>{{ cate.label }}</q-item-section>
+        </q-item>
+      </q-list>
+    </q-card>
+  </StickySideBar>
+</template>
+<script setup>
+import StickySideBar from 'src/components/StickySideBar.vue';
+import { getCategories } from 'src/services/category';
+import { getPosts } from 'src/services';
+const props = defineProps({
+  category: {
+    type: String,
+    defult: '',
+  },
+});
+const emit = defineEmits(['update:category']);
+const categories = getCategories();
+const changeCategory = value => {
+  emit('update:category', value);
+};
+</script>
+
+```
+
+```vue [/pages/index.vue]
+<template>
+  <q-page padding>
+    <div class="row q-col-gutter-x-lg">
+      <PostLeftBar class="col-grow" v-model:category="params.category" />
+      <section class="col-7">
+        <PostHeader />
+        <PostList :items="posts" />
+      </section>
+      <PostRightBar class="col-3" @open-write-dialog="openWriteDialog" />
+    </div>
+    <PostWriteDialog
+      :model-value="postDialog"
+      @update:model-value="val => (postDialog = val)"
+    />
+  </q-page>
+</template>
+
+<script setup>
+import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
+import { getPosts } from 'src/services';
+import { useAsyncState } from '@vueuse/core';
+
+import PostList from 'src/components/apps/post/PostList.vue';
+import PostHeader from './components/PostHeader.vue';
+import PostLeftBar from './components/PostLeftBar.vue';
+import PostRightBar from './components/PostRightBar.vue';
+import PostWriteDialog from 'src/components/apps/post/PostWriteDialog.vue';
+
+const router = useRouter();
+const params = ref({
+  category: null,
+});
+// const goPostDetails = id => router.push(`/posts/${id}`);
+
+const { state: posts, execute } = useAsyncState(getPosts, [], {
+  throwError: true,
+});
+watch(
+  params,
+  () => {
+    execute(0, params.value);
+  },
+  {
+    deep: true,
+  },
+);
+
+const doSelectCate = val => {};
+
+const postDialog = ref(false);
+const openWriteDialog = () => {
+  postDialog.value = true;
+};
+</script>
+
+<style lang="scss" scoped></style>
+
+```
+
+```vue [components/apps/post/PostForm.vue]
+<template>
+  <q-form @submit.prevent="handleSubmit">
+    <q-card-section class="q-gutter-y-sm">
+      <q-input
+        v-model="titleModel"
+        outlined
+        placeholder="제목"
+        hide-bottom-space
+        :rules="[validateRequired]"
+      />
+      <q-select
+        v-model="categoryModel"
+        outlined
+        :options="categories"
+        emit-value
+        map-options
+        hide-bottom-space
+        :rules="[validateRequired]"
+      >
+        <template v-if="!categoryModel" #selected>
+          <span class="text-grey-7">카테고리를 선택하세요.</span>
+        </template>
+      </q-select>
+      <TiptapEditor v-model="contentModel" />
+      <q-input
+        outlined
+        placeholder="태그를 입력해주세요~! (입력 후 Enter)"
+        prefix="#"
+        @keypress.enter.prevent="onRegistTag"
+      />
+      <q-chip
+        v-for="(tag, index) in tags"
+        :key="tag"
+        outline
+        dense
+        color="teal"
+        removable
+        @remove="removeTag(index)"
+      >
+        {{ tag }}
+      </q-chip>
+    </q-card-section>
+    <q-separator />
+    <q-card-actions align="right">
+      <slot name="actions">
+        <q-btn flat label="취소하기" v-close-popup />
+        <q-btn
+          type="submit"
+          flat
+          label="저장하기"
+          color="primary"
+          :loading="loading"
+        />
+      </slot>
+    </q-card-actions>
+  </q-form>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue';
+import { useQuasar } from 'quasar';
+import { getCategories } from 'src/services/category';
+import { validateRequired } from 'src/utils/validate-rules';
+import TiptapEditor from 'src/components/tiptap/TiptapEditor.vue';
+
+const props = defineProps({
+  title: {
+    type: String,
+  },
+  category: {
+    type: String,
+  },
+  content: {
+    type: String,
+  },
+  tags: {
+    type: Array,
+    default: () => [],
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const emit = defineEmits([
+  'update:title',
+  'update:category',
+  'update:content',
+  'update:tags',
+  'submit',
+]);
+
+const $q = useQuasar();
+
+const titleModel = computed({
+  get: () => props.title,
+  set: val => emit('update:title', val),
+});
+const categoryModel = computed({
+  get: () => props.category,
+  set: val => emit('update:category', val),
+});
+const contentModel = computed({
+  get: () => props.content,
+  set: val => emit('update:content', val),
+});
+
+const onRegistTag = e => {
+  const tagValue = e.target.value.replace(/ /g, '');
+  if (!tagValue) {
+    return;
+  }
+  if (props.tags.length >= 10) {
+    $q.notify('태그는 10개 이상 등록할 수 없습니다.');
+    return;
+  }
+  if (props.tags.includes(tagValue) === false) {
+    emit('update:tags', [...props.tags, tagValue]);
+  }
+  e.target.value = '';
+};
+const removeTag = index => {
+  const model = [...props.tags];
+  model.splice(index, 1);
+  emit('update:tags', model);
+};
+
+const categories = getCategories();
+
+const handleSubmit = () => {
+  if (!contentModel.value) {
+    $q.notify('내용을 작성하세요.');
+    return;
+  }
+  emit('submit');
+};
+</script>
+
+<style lang="scss" scoped></style>
+```
+
+
+
 
 ```vue [src/components/apps/post/PostForm.vue]
 <template>
@@ -534,14 +809,8 @@ const { isLoading, execute } = useAsyncState(createPost, null, {
 </script>
 
 <style lang="scss" scoped></style>
+```
 
-```js [src/composables/useTag.js] export const useTag = options => { const { tags, updateTags, maxLengthMessage } = options || {}; const addTag =
-newTag => { const isEventHandler = typeof newTag !== 'string'; const tagValue = isEventHandler ? newTag.target.value.replace(/ /g, '') :
-newTag.replace(/ /g, ''); if (!tagValue) { return; } if (tags.value.length >= 10) { $q.notify(maxLengthMessage); return; } if
-(tags.value.includes(tagValue) === false) { // emit('update:tags', [...props.tags, tagValue]); updateTags([...tags.value, tagValue]); } if
-(isEventHandler) { newTag.target.value = ''; } }; const removeTag = index => { const model = [...tags.value]; model.splice(index, 1); //
-emit('update:tags', model); updateTags(model); }; return { addTag, removeTag, }; };
-````
 
 ## 정렬
 

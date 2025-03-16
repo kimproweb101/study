@@ -45,7 +45,9 @@ template 다음 테그없이 text를 작성하는 경우 경고 발생
 <template><div>...loading</div></template>
 ```
 
-## useAxios 비동기 처리
+## useAxios
+
+### computed
 
 totalCount 가 이미 computed 로 처리가 되서 아래와 같은 코드가 될거라고 생각했는데,
 안됨
@@ -61,7 +63,19 @@ const totalPages = Math.ceil(totalCount.value / params.value._limit);
 
 ```js
 const totalCount = computed(() => response.value.headers["x-total-count"]);
-const totalPages = computed(() => Math.ceil(totalCount.value / params.value._limit));
+const totalPages = computed(() =>
+  Math.ceil(totalCount.value / params.value._limit)
+);
+```
+
+### execute
+
+```js [틀린코드]
+watchEffect(execute());
+```
+
+```js [올바른코드]
+watchEffect(execute);
 ```
 
 ## 홀수짝수 판별시 1%2
@@ -136,7 +150,8 @@ export default [
 ```
 
 ```vue [틀린문법2]
-- 1번이 안되서 무지성 으로 2번째 시도 defineProps( { id:{ type: String } }, { title: { type:String } } )
+- 1번이 안되서 무지성 으로 2번째 시도 defineProps( { id:{ type: String } }, {
+title: { type:String } } )
 ```
 
 ```vue [옳은 문법]

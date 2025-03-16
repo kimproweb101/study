@@ -15,4 +15,5 @@ outline: deep
 <!--@include: ./basic/pinia.md-->
 
 ## props
+
 <!--@include: ./basic/props.md-->

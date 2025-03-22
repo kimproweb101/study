@@ -82,6 +82,7 @@ export default defineConfig({
                 { text: "useModal", link: "/docs/vue/example/useModal.md" },
                 { text: "snackbar", link: "/docs/vue/example/snackbar.md" },
                 { text: "v-model", link: "/docs/vue/example/v-model.md" },
+                { text: "scrollSpy", link: "/docs/vue/example/scrollSpy.md" },
               ],
             },
             { text: "bootstrap", link: "/docs/vue/bootstrap.md" },
@@ -89,6 +90,15 @@ export default defineConfig({
               text: "quasar",
               link: "/docs/vue/quasar.md",
               items: [
+                {
+                  text: "layout",
+                  items: [
+                    {
+                      text: "header",
+                      link: "/docs/vue/quasar/layout/header/header.md",
+                    },
+                  ],
+                },
                 { text: "scrollSpy", link: "/docs/vue/quasar/scrollSpy.md" },
               ],
             },

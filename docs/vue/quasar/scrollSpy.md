@@ -332,3 +332,156 @@ const handleDrawerClick = (sectionId) => {
   });
 };
 ```
+
+3. gpt 3차 코드
+
+```vue [menu active 수정]
+<template>
+  <q-layout view="hHh lpR fFf">
+    <q-header elevated>
+      <q-toolbar>
+        <q-btn
+          flat
+          dense
+          round
+          icon="menu"
+          class="q-mr-sm"
+          @click="toggleDrawer"
+          v-if="$q.screen.xs"
+        />
+        <q-toolbar-title>Quasar Scroll Spy</q-toolbar-title>
+        <q-space />
+        <template v-if="!$q.screen.xs">
+          <q-btn
+            flat
+            :class="{ active: activeSection === 'section1' }"
+            label="Menu1"
+            @click="scrollTo('section1')"
+          />
+          <q-btn
+            flat
+            :class="{ active: activeSection === 'section2' }"
+            label="Menu2"
+            @click="scrollTo('section2')"
+          />
+          <q-btn
+            flat
+            :class="{ active: activeSection === 'section3' }"
+            label="Menu3"
+            @click="scrollTo('section3')"
+          />
+        </template>
+      </q-toolbar>
+    </q-header>
+
+    <q-drawer v-model="drawer" side="left" overlay behavior="mobile">
+      <q-list>
+        <q-item
+          clickable
+          :class="{ active: activeSection === 'section1' }"
+          @click="handleDrawerClick('section1')"
+        >
+          <q-item-section>Menu1</q-item-section>
+        </q-item>
+        <q-item
+          clickable
+          :class="{ active: activeSection === 'section2' }"
+          @click="handleDrawerClick('section2')"
+        >
+          <q-item-section>Menu2</q-item-section>
+        </q-item>
+        <q-item
+          clickable
+          :class="{ active: activeSection === 'section3' }"
+          @click="handleDrawerClick('section3')"
+        >
+          <q-item-section>Menu3</q-item-section>
+        </q-item>
+      </q-list>
+    </q-drawer>
+
+    <q-page-container>
+      <q-page class="q-pa-md">
+        <div ref="section1" class="section bg-pink">Section 1</div>
+        <div ref="section2" class="section bg-red">Section 2</div>
+        <div ref="section3" class="section bg-green">Section 3</div>
+      </q-page>
+    </q-page-container>
+  </q-layout>
+</template>
+
+<script setup>
+import { ref, onMounted, onUnmounted, nextTick } from "vue";
+import { useQuasar } from "quasar";
+
+const $q = useQuasar();
+const drawer = ref(false);
+const activeSection = ref("");
+const section1 = ref(null);
+const section2 = ref(null);
+const section3 = ref(null);
+
+const toggleDrawer = () => {
+  drawer.value = !drawer.value;
+};
+
+const scrollTo = (sectionId) => {
+  const target = { section1, section2, section3 }[sectionId]?.value;
+  if (target) {
+    window.scrollTo({ top: target.offsetTop - 50, behavior: "smooth" });
+    activeSection.value = sectionId;
+  }
+};
+
+const handleDrawerClick = (sectionId) => {
+  drawer.value = false;
+  nextTick(() => {
+    scrollTo(sectionId);
+  });
+};
+
+const onScroll = () => {
+  let foundSection = "";
+  const sections = { section1, section2, section3 };
+
+  for (const [id, refEl] of Object.entries(sections)) {
+    if (refEl.value) {
+      const rect = refEl.value.getBoundingClientRect();
+      if (
+        rect.top <= window.innerHeight / 2 &&
+        rect.bottom >= window.innerHeight / 2
+      ) {
+        foundSection = id;
+        break;
+      }
+    }
+  }
+  activeSection.value = foundSection;
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", onScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", onScroll);
+});
+</script>
+
+<style scoped>
+.section {
+  height: 2000px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.active {
+  font-weight: bold;
+  color: #ffeb3b;
+}
+</style>
+```
